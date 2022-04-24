@@ -48,3 +48,12 @@ Design_34                           # 4因素3水平，因素名字factor1,facto
 write.csv(Design_34, file = "Design_34.csv", row.names = FALSE)
 ```
 
+Analysis of two factors Factorial Design
+```{r}
+library(daewr)
+data(COdata)
+head(COdata)
+model1 <- aov( CO ~ Eth * Ratio, data = COdata )
+summary(model1)
+```
+
