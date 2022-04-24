@@ -39,6 +39,8 @@ write.csv(CopterDes, file = "CopterDes.csv", row.names = FALSE) # save design to
 
 
 More than two factors Factorial Design
+Package **AlgDesign** **gen.factorial()**
+
 ```{r}
 library(AlgDesign)
 Design_34 <- gen.factorial(levels = 3, nVars = 4, varNames = c(paste0("factor",1:4))) 
