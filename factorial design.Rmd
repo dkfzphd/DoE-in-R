@@ -1,0 +1,40 @@
+---
+title: "factorial design-析因设计"
+author: "ManBuXiaoCun"
+date: '2022-04-24'
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+All the code and text are from the book\
+**Design and Analysis of Experiments with R**(2015)
+Book by **John Lawson**
+
+### factorial design 析因设计
+
+- 完全析因设计（完全随机设计）
+In a factorial design the cells consist of all possible combinations
+of the levels of the factors under study. Factorial designs accentuate the factor
+eﬀects, allow for estimation of interdependency of eﬀects (or interactions),
+and are the ﬁrst technique in the category of what is called treatment design.
+(cite from **Design and Analysis of Experiments with R**(2015)
+Book by **John Lawson**)
+
+Two-Factor Factorial Plan in R `r expand.grid`
+```{r}
+D <- expand.grid( BW = c(3.25, 3.75, 4.25), WL = c(4, 5, 6) )
+D  # original design when no replicate
+D <- rbind(D,D) # duplicates for experiments
+
+set.seed(2591)
+D <- D[order(sample(1:18)), ] # randomize the order of D
+CopterDes <- D[ c( "BW", "WL" )]
+CopterDes
+write.csv(CopterDes, file = "CopterDes.csv", row.names = FALSE) # save design to csv file
+```
+
+
