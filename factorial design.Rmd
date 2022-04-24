@@ -41,6 +41,8 @@ write.csv(CopterDes, file = "CopterDes.csv", row.names = FALSE) # save design to
 More than two factors Factorial Design
 ```{r}
 library(AlgDesign)
-gen.factorial(levels = 3, nVars = 4, varNames = c(paste0("x",1:4)) # 4因素3水平，因素名字x1,x2,x3,x4
+Design_34 <- gen.factorial(levels = 3, nVars = 4, varNames = c(paste0("factor",1:4))) 
+Design_34                           # 4因素3水平，因素名字x1,x2,x3,x4
+write.csv(Design_34, file = "Design_34.csv")
 ```
 
