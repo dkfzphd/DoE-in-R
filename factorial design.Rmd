@@ -11,7 +11,7 @@ editor_options:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 All the code and text are from the book\
-and From Data to Decisions: Measurement, Uncertainty, Analysis, and Modeling
+and **From Data to Decisions: Measurement, Uncertainty, Analysis, and Modeling**
 Instructor: **Chris Mack**\
 **Design and Analysis of Experiments with R**(2015)
 Book by **John Lawson**
