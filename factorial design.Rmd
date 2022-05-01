@@ -57,3 +57,9 @@ model1 <- aov( CO ~ Eth * Ratio, data = COdata )
 summary(model1)
 ```
 
+AlgDesign for Factorial Design
+```{r}
+library(AlgDesign)
+
+```
+

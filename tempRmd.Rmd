@@ -1,0 +1,38 @@
+---
+title: "tempFile"
+author: "ManBuXiaoCun"
+date: '2022-04-24'
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+library(daewr)
+data(COdata)
+head(COdata)
+dim(COdata)
+```
+
+3D plot for COdata
+```{r}
+# library
+library(rgl)
+
+plot3d(x = COdata$'Eth', y = COdata$'Ratio',
+       z = COdata$'CO',col = "red")  
+```
+
+Contour plot
+```{r}
+
+ggplot(COdata, aes( x = Eth, y =Ratio , color=CO))+
+  geom_point()+
+  geom_contour(aes(z = CO))
+```
+
