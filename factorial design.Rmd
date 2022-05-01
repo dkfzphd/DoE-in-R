@@ -11,8 +11,12 @@ editor_options:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 All the code and text are from the book\
+and From Data to Decisions: Measurement, Uncertainty, Analysis, and Modeling
+Instructor: **Chris Mack**\
 **Design and Analysis of Experiments with R**(2015)
 Book by **John Lawson**
+
+Chris Mack Course website: http://www.lithoguru.com/scientist/statistics/course.html
 
 ### factorial design 析因设计
 
@@ -80,5 +84,52 @@ write.csv(Design323L3F, file = "Design323L3F.csv", row.names = FALSE)
 
 # 写入指定文件夹 write it into data folder
 write.csv(Design323L3F, file = here::here("data","Design323L3F.csv"), row.names = FALSE)
+```
+
+Analysis of a factorial design
+```{r}
+library(tidyverse)
+library(readr)
+yield <- read_csv( here::here("FactorialDesign.csv") )
+yield
+# to remove yield column 1
+yield <- yield[-1]
+plot(yield)
+```
+
+```{r}
+library(lattice)
+xyplot(Yield ~ Temp | Catalyst, data = yield,
+       panel = function(x, y, ...)
+       {
+         panel.xyplot(x, y, ...)
+         panel.lmline(x, y, ...)
+       }
+)
+xyplot(Yield ~ Conc | Catalyst, data = yield,
+       panel = function(x, y, ...)
+       {
+         panel.xyplot(x, y, ...)
+         panel.lmline(x, y, ...)
+       }
+)
+```
+
+Explore the "Yield" data from "FactorialDesign.csv"
+```{r}
+# let's model the main effects
+model1 = lm(Yield ~ ., data = yield)
+summary(model1)
+```
+
+```{r}
+# Now we'll add two-factor interactions
+model2 = lm(Yield ~ .^2, data = yield)
+summary(model2)
+```
+
+```{r}
+#compare the two models
+anova(model1, model2)
 ```
 
