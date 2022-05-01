@@ -44,7 +44,10 @@ Package **AlgDesign** **gen.factorial()**
 ```{r}
 library(AlgDesign)
 Design_34 <- gen.factorial(levels = 3, nVars = 4, varNames = c(paste0("factor",1:4))) 
-Design_34                           # 4因素3水平，因素名字factor1,factor2,factor3,factor4
+Design_34                           
+# 4因素3水平，因素名字factor1,factor2,factor3,factor4
+
+#save into csv file
 write.csv(Design_34, file = "Design_34.csv", row.names = FALSE)
 ```
 
@@ -60,6 +63,22 @@ summary(model1)
 AlgDesign for Factorial Design
 ```{r}
 library(AlgDesign)
+# As an example, we'll create full factorial design with three factors (F1, F2, F3) and
+# with 3, 2, and 3 levels, respectively
 
+# 3, 2, 3 levels, 3 factors
+Design323L3F <- gen.factorial(levels = c(3,2,3), nVars = 3, center=TRUE, varNames=c("F1", "F2", "F3"))
+# When center = TRUE, the design is symmetric and the three levels will be signified by -1, 0, and 1
+
+# The common 2^k design (two levels for each factor):
+dat = gen.factorial(levels = 2, nVars = 3, varNames=c("F1", "F2", "F3"))
+dat
+# the output is a data frame containing the factorial design
+
+#
+write.csv(Design323L3F, file = "Design323L3F.csv", row.names = FALSE)
+
+# 写入指定文件夹 write it into data folder
+write.csv(Design323L3F, file = here::here("data","Design323L3F.csv"), row.names = FALSE)
 ```
 
